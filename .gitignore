@@ -1,0 +1,10 @@
+target/
+*.share
+*.key
+secrets.py
+__pycache__/
+/chain/build/
+/run/
+/deploy/dist/
+/deploy/state/
+/deploy/signer_log.txt

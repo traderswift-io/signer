@@ -1,0 +1,274 @@
+{
+ "app_name": "<appd>",
+ "app_version": "",
+ "genesis_time": "2026-11-12T04:19:52.345844488Z",
+ "chain_id": "signer-1",
+ "initial_height": 1,
+ "app_hash": null,
+ "app_state": {
+  "auth": {
+   "params": {
+    "max_memo_characters": "256",
+    "tx_sig_limit": "7",
+    "tx_size_cost_per_byte": "10",
+    "sig_verify_cost_ed25519": "590",
+    "sig_verify_cost_secp256k1": "1000",
+    "sig_verify_cost_mldsa65": "750"
+   },
+   "accounts": [
+    {
+     "@type": "/cosmos.auth.v1beta1.BaseAccount",
+     "address": "signer1x79nlqj4xgh7flf4tmg83ha9zy8ud998g205us",
+     "pub_key": null,
+     "account_number": "0",
+     "sequence": "0"
+    },
+    {
+     "@type": "/cosmos.auth.v1beta1.BaseAccount",
+     "address": "signer15eupm9kd99s9ad3z29y4jjfx87p3g2faqv53fe",
+     "pub_key": null,
+     "account_number": "1",
+     "sequence": "0"
+    },
+    {
+     "@type": "/cosmos.auth.v1beta1.BaseAccount",
+     "address": "signer1t5a74dqgw94m4scx439ekwhzmvrmf3usfjely5",
+     "pub_key": null,
+     "account_number": "2",
+     "sequence": "0"
+    },
+    {
+     "@type": "/cosmos.auth.v1beta1.BaseAccount",
+     "address": "signer1hqv58ml356588e64ypkx6v5035mdx4ch3pu4e9",
+     "pub_key": null,
+     "account_number": "3",
+     "sequence": "0"
+    },
+    {
+     "@type": "/cosmos.auth.v1beta1.BaseAccount",
+     "address": "signer12pvpda5gxq8m2rgmxwjs7atxyhjgrej7nnmd56",
+     "pub_key": null,
+     "account_number": "4",
+     "sequence": "0"
+    },
+    {
+     "@type": "/cosmos.auth.v1beta1.BaseAccount",
+     "address": "signer1el2j5346s5mwal9fwyp623he6909z36rfgdmrz",
+     "pub_key": null,
+     "account_number": "5",
+     "sequence": "0"
+    },
+    {
+     "@type": "/cosmos.auth.v1beta1.BaseAccount",
+     "address": "signer1tlrz40rgfkn74v3ch9ckz928mlyjhdyeusydm0",
+     "pub_key": null,
+     "account_number": "6",
+     "sequence": "0"
+    },
+    {
+     "@type": "/cosmos.auth.v1beta1.BaseAccount",
+     "address": "signer1vvzreeqdhtq9c5yclvpe64dj7zj6m0xwx0fj6g",
+     "pub_key": null,
+     "account_number": "7",
+     "sequence": "0"
+    },
+    {
+     "@type": "/cosmos.auth.v1beta1.BaseAccount",
+     "address": "signer1yvskjx53ez3we749vck72rw7vtmyxdp50zp6ua",
+     "pub_key": null,
+     "account_number": "8",
+     "sequence": "0"
+    }
+   ]
+  },
+  "bank": {
+   "params": {
+    "send_enabled": [],
+    "default_send_enabled": true
+   },
+   "balances": [
+    {
+     "address": "signer1yvskjx53ez3we749vck72rw7vtmyxdp50zp6ua",
+     "coins": [
+      {
+       "denom": "usigner",
+       "amount": "1000000"
+      }
+     ]
+    },
+    {
+     "address": "signer1x79nlqj4xgh7flf4tmg83ha9zy8ud998g205us",
+     "coins": [
+      {
+       "denom": "usigner",
+       "amount": "1000000"
+      }
+     ]
+    },
+    {
+     "address": "signer12pvpda5gxq8m2rgmxwjs7atxyhjgrej7nnmd56",
+     "coins": [
+      {
+       "denom": "usigner",
+       "amount": "1000000"
+      }
+     ]
+    },
+    {
+     "address": "signer1t5a74dqgw94m4scx439ekwhzmvrmf3usfjely5",
+     "coins": [
+      {
+       "denom": "usigner",
+       "amount": "1000000"
+      }
+     ]
+    },
+    {
+     "address": "signer1tlrz40rgfkn74v3ch9ckz928mlyjhdyeusydm0",
+     "coins": [
+      {
+       "denom": "usigner",
+       "amount": "1000000"
+      }
+     ]
+    },
+    {
+     "address": "signer1vvzreeqdhtq9c5yclvpe64dj7zj6m0xwx0fj6g",
+     "coins": [
+      {
+       "denom": "usigner",
+       "amount": "1000000"
+      }
+     ]
+    },
+    {
+     "address": "signer15eupm9kd99s9ad3z29y4jjfx87p3g2faqv53fe",
+     "coins": [
+      {
+       "denom": "usigner",
+       "amount": "1000000"
+      }
+     ]
+    },
+    {
+     "address": "signer1hqv58ml356588e64ypkx6v5035mdx4ch3pu4e9",
+     "coins": [
+      {
+       "denom": "usigner",
+       "amount": "1000000"
+      }
+     ]
+    },
+    {
+     "address": "signer1el2j5346s5mwal9fwyp623he6909z36rfgdmrz",
+     "coins": [
+      {
+       "denom": "usigner",
+       "amount": "1000000"
+      }
+     ]
+    }
+   ],
+   "supply": [
+    {
+     "denom": "usigner",
+     "amount": "9000000"
+    }
+   ],
+   "denom_metadata": [],
+   "send_enabled": []
+  },
+  "consensus": null,
+  "genutil": {
+   "gen_txs": []
+  },
+  "policy": {
+   "release_activation_delay_blocks": "100",
+   "accounts": [],
+   "signers": [
+    {
+     "signer_id": "s1",
+     "signer_address": "signer15eupm9kd99s9ad3z29y4jjfx87p3g2faqv53fe"
+    },
+    {
+     "signer_id": "s2",
+     "signer_address": "signer12pvpda5gxq8m2rgmxwjs7atxyhjgrej7nnmd56"
+    },
+    {
+     "signer_id": "s3",
+     "signer_address": "signer1tlrz40rgfkn74v3ch9ckz928mlyjhdyeusydm0"
+    }
+   ],
+   "key_refs": [],
+   "key_ref_policy_epochs": [],
+   "policies": [],
+   "allowed_releases": [],
+   "log_entries": [],
+   "tape_anchors": []
+  },
+  "upgrade": {},
+  "validatorset": {
+   "admin": "signer1t5a74dqgw94m4scx439ekwhzmvrmf3usfjely5",
+   "validators": [
+    {
+     "consensus_public_key": "fbOfrBBlnNcqwk4jh7lqsc3PWerj6FJqnvtwdDVfzPw=",
+     "power": "10000000",
+     "moniker": "signer-1",
+     "founding": true
+    },
+    {
+     "consensus_public_key": "OZ4Jy0d9OGe5tQjQ1p5YA9U1at0EPMwMLS0YXn3lY9U=",
+     "power": "10000000",
+     "moniker": "signer-2",
+     "founding": true
+    },
+    {
+     "consensus_public_key": "9Mu7YA0lSUonICo7unc2BnBBDF4+8LPqp3LaIy3/fIM=",
+     "power": "10000000",
+     "moniker": "signer-3",
+     "founding": true
+    },
+    {
+     "consensus_public_key": "zI4A15oUkTtfXjKgRbNSEV3H2jjZPNpilshf8p5j8Ec=",
+     "power": "10000000",
+     "moniker": "signer-4",
+     "founding": true
+    }
+   ],
+   "open_join_params": {
+    "activation_height": "1",
+    "outsider_count_cap": 100,
+    "joiner_power": "100000",
+    "missed_blocks_before_removal": "300",
+    "rejoin_cooldown_seconds": "86400"
+   }
+  }
+ },
+ "consensus": {
+  "params": {
+   "block": {
+    "max_bytes": "55600190",
+    "max_gas": "-1"
+   },
+   "evidence": {
+    "max_age_num_blocks": "100000",
+    "max_age_duration": "172800000000000",
+    "max_bytes": "1048576"
+   },
+   "validator": {
+    "pub_key_types": [
+     "ed25519"
+    ]
+   },
+   "version": {
+    "app": "0"
+   },
+   "abci": {
+    "vote_extensions_enable_height": "0"
+   },
+   "authority": {
+    "authority": ""
+   }
+  }
+ }
+}

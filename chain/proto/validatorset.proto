@@ -1,0 +1,177 @@
+syntax = "proto3";
+
+package signer.validatorset.v1;
+
+import "cosmos/msg/v1/msg.proto";
+
+option go_package = "signer/chain/validatorset";
+
+message Validator {
+  string consensus_public_key = 1;
+  int64 power = 2;
+  string moniker = 3;
+  bool founding = 4;
+}
+
+message Joiner {
+  string consensus_public_key = 1;
+  string owner_address = 2;
+  string node_id = 3;
+  string endpoint_ip = 4;
+  string contact = 5;
+  int64 joined_at_height = 6;
+  int64 consecutive_missed_blocks = 7;
+}
+
+message OpenJoinParams {
+  int64 activation_height = 1;
+  uint32 outsider_count_cap = 2;
+  int64 joiner_power = 3;
+  int64 missed_blocks_before_removal = 4;
+  int64 rejoin_cooldown_seconds = 5;
+}
+
+message RejoinCooldown {
+  string owner_address = 1;
+  int64 until_unix_seconds = 2;
+}
+
+message GenesisState {
+  string admin = 1;
+  repeated Validator validators = 2;
+  OpenJoinParams open_join_params = 3;
+  repeated Joiner joiners = 4;
+  repeated RejoinCooldown rejoin_cooldowns = 5;
+  string pending_admin = 6;
+}
+
+service Msg {
+  option (cosmos.msg.v1.service) = true;
+  rpc AddValidator(MsgAddValidator) returns (MsgAddValidatorResponse);
+  rpc SetValidatorPower(MsgSetValidatorPower) returns (MsgSetValidatorPowerResponse);
+  rpc RemoveValidator(MsgRemoveValidator) returns (MsgRemoveValidatorResponse);
+  rpc RequestJoin(MsgRequestJoin) returns (MsgRequestJoinResponse);
+  rpc SetOutsiderCountCap(MsgSetOutsiderCountCap) returns (MsgSetOutsiderCountCapResponse);
+  rpc ScheduleUpgrade(MsgScheduleUpgrade) returns (MsgScheduleUpgradeResponse);
+  rpc CancelUpgrade(MsgCancelUpgrade) returns (MsgCancelUpgradeResponse);
+  rpc SetAdmin(MsgSetAdmin) returns (MsgSetAdminResponse);
+  rpc AcceptAdmin(MsgAcceptAdmin) returns (MsgAcceptAdminResponse);
+}
+
+message MsgAddValidator {
+  option (cosmos.msg.v1.signer) = "admin";
+  string admin = 1;
+  string consensus_public_key = 2;
+  int64 power = 3;
+  string moniker = 4;
+  bool founding = 5;
+}
+message MsgAddValidatorResponse {}
+
+message MsgSetValidatorPower {
+  option (cosmos.msg.v1.signer) = "admin";
+  string admin = 1;
+  string consensus_public_key = 2;
+  int64 power = 3;
+}
+message MsgSetValidatorPowerResponse {}
+
+message MsgRemoveValidator {
+  option (cosmos.msg.v1.signer) = "admin";
+  string admin = 1;
+  string consensus_public_key = 2;
+}
+message MsgRemoveValidatorResponse {}
+
+message MsgRequestJoin {
+  option (cosmos.msg.v1.signer) = "requester";
+  string requester = 1;
+  string consensus_public_key = 2;
+  string node_id = 3;
+  string moniker = 4;
+  string endpoint_ip = 5;
+  string contact = 6;
+  string consensus_key_proof = 7;
+}
+message MsgRequestJoinResponse {
+  bool accepted = 1;
+  string refusal_reason = 2;
+  int64 power = 3;
+}
+
+message MsgSetOutsiderCountCap {
+  option (cosmos.msg.v1.signer) = "admin";
+  string admin = 1;
+  uint32 outsider_count_cap = 2;
+}
+message MsgSetOutsiderCountCapResponse {}
+
+message MsgScheduleUpgrade {
+  option (cosmos.msg.v1.signer) = "admin";
+  string admin = 1;
+  string name = 2;
+  int64 height = 3;
+  string info = 4;
+}
+message MsgScheduleUpgradeResponse {}
+
+message MsgCancelUpgrade {
+  option (cosmos.msg.v1.signer) = "admin";
+  string admin = 1;
+}
+message MsgCancelUpgradeResponse {}
+
+message MsgSetAdmin {
+  option (cosmos.msg.v1.signer) = "admin";
+  string admin = 1;
+  string new_admin = 2;
+}
+message MsgSetAdminResponse {}
+
+message MsgAcceptAdmin {
+  option (cosmos.msg.v1.signer) = "new_admin";
+  string new_admin = 1;
+}
+message MsgAcceptAdminResponse {}
+
+service Query {
+  rpc Admin(QueryAdminRequest) returns (QueryAdminResponse);
+  rpc Validators(QueryValidatorsRequest) returns (QueryValidatorsResponse);
+  rpc Validator(QueryValidatorRequest) returns (QueryValidatorResponse);
+  rpc Joiners(QueryJoinersRequest) returns (QueryJoinersResponse);
+  rpc OpenJoin(QueryOpenJoinRequest) returns (QueryOpenJoinResponse);
+}
+
+message QueryAdminRequest {}
+message QueryAdminResponse {
+  string admin = 1;
+  string pending_admin = 2;
+}
+
+message QueryValidatorsRequest {}
+message QueryValidatorsResponse {
+  repeated Validator validators = 1;
+  int64 total_power = 2;
+}
+
+message QueryValidatorRequest {
+  string consensus_public_key = 1;
+}
+message QueryValidatorResponse {
+  Validator validator = 1;
+}
+
+message QueryJoinersRequest {}
+message QueryJoinersResponse {
+  repeated Joiner joiners = 1;
+}
+
+message QueryOpenJoinRequest {}
+message QueryOpenJoinResponse {
+  OpenJoinParams params = 1;
+  bool active = 2;
+  uint32 outsider_count = 3;
+  int64 outsider_power = 4;
+  int64 total_power = 5;
+  int64 outsider_power_limit = 6;
+}
