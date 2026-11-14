@@ -248,4 +248,4 @@ signerd query upgrade plan --node tcp://127.0.0.1:26657
 
 `signer-1` has had its upgrade module from genesis, so a new node syncs from block 1 with the current release and later upgrades switch by themselves.
 
-To leave, stop the node. If you joined by the chain route you are removed after 300 missed blocks; or open an issue and we remove you at once. Keep or delete your copy of the chain as you like; it holds no secret.
+To leave, stop the node. If you joined by the chain route you are removed after 300 consecutive missed blocks; or open an issue and we remove you at once. Keep or delete your copy of the chain as you like; it holds no secret.

@@ -117,6 +117,6 @@ Report to your user, now and whenever they ask:
 | Still a validator | `signerd query validatorset joiners --node tcp://127.0.0.1:26657` | Your moniker listed |
 | Process | `kill -0 "$(cat "$SIGNER/node.pid")"` | No error |
 
-To stop: `kill "$(cat "$SIGNER/node.pid")"`. After 300 missed blocks the chain removes the validator by itself.
+To stop: `kill "$(cat "$SIGNER/node.pid")"`. After 300 consecutive missed blocks the chain removes the validator by itself.
 
 The full operator guide is `docs/VALIDATOR_JOIN.md`. Questions go to https://github.com/traderswift-io/signer/issues.

@@ -10,7 +10,7 @@ Cosmos SDK v0.55.0 app, CometBFT v0.40.0, zero fees, no staking, mint, distribut
 | `policy/` | The `policy` module: keeper, message servers, query server, REST routes, genesis. `policy.pb.go` is generated |
 | `validatorset/` | The validator set: admin, validators, the one-third rule, updates to CometBFT. `validatorset.pb.go` is generated |
 | `proto/` | `policy.proto`, `validatorset.proto`. Regenerate with `generate_proto.sh` (needs `buf` and `protoc-gen-gocosmos` on the PATH) |
-| `main.go`, `app.go`, `export.go` | Node binary and wiring, written from the SDK's Apache-2.0 `simapp`. The ante handler is the SDK's stock one |
+| `main.go`, `app.go`, `export.go` | Node binary and wiring, written from the SDK's Apache-2.0 `simapp`. The ante handler is the SDK's, with one decorator added in front: first contact (below) |
 | `run_local_network.sh` | Local validators on `127.0.0.1` |
 
 ## Validator set
@@ -24,7 +24,8 @@ An admin address, set in genesis, adds, re-weights and removes validators, and s
 | `RemoveValidator` | admin | validator unknown, set would be empty |
 | `RequestJoin` | anyone, from their own node | open join not active, proof over chain id, requester, node id and consensus key does not verify, key, account or endpoint IP already has a validator, outsider count cap reached, outsider power would reach the liveness limit, rejoin cooldown not over |
 | `SetOutsiderCountCap` | admin | |
-| `ScheduleUpgrade`, `CancelUpgrade` | admin | upgrade info has no checksummed `linux/amd64` binary |
+| `ScheduleUpgrade` | admin | upgrade info has no checksummed `linux/amd64` binary |
+| `CancelUpgrade` | admin | |
 | `SetAdmin` (`new_admin`) | admin | before the open-join activation height, address invalid, already the admin |
 | `AcceptAdmin` | the pending admin | no rotation pending, signer is not the pending address |
 
@@ -73,7 +74,7 @@ CometBFT commits only with **more than** two thirds of voting power. Three equal
 | `RecordDecision` | the registered signer's own address, matching `signer_id` | |
 | `AnchorTape` | a registered signer or the validator-set admin | |
 
-Only accounts that exist on chain can send a tx, which is the spam limit on a zero-fee chain. New ones are created in genesis or by a bank send of any amount.
+Only accounts that exist on chain can send a tx, which is the spam limit on a zero-fee chain. New ones are created in genesis, by a bank send of any amount, or by first contact: an address with no account may send one tx holding only `RequestJoin`, at sequence 0, and at most 20 accounts are created this way per block.
 
 ## Epochs
 

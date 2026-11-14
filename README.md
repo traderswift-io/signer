@@ -28,7 +28,7 @@ Words: **Signer** is the product. A **signer node** is the Rust program. **s1, s
 
 ## Status
 
-`signer-1` started on 12 Nov 2026 at 04:19:52 UTC. It runs one key, on a test account, with test money. What was tested before launch is in the release `signer-1-gates` of this repository. The launch record follows as a release after the first live orders.
+`signer-1` started on 12 Nov 2026 at 04:19:52 UTC. It runs one key, on a test account, with test money. What was tested before launch is in the release `signer-1-gates` of this repository. The launch record, with the first live orders on 14 Nov, is the release `signer-1-launch`.
 
 ## Run a validator
 

@@ -6,7 +6,7 @@ One small program per Signer validator. Once a UTC day it publishes Signer's sta
 
 - `H` is the last Signer height whose header time falls in that UTC day.
 - The hash is the `app_hash` in the header of `H + 1`, in lowercase hex. It is the state after block `H` ran.
-- Every honest validator computes the same pair from its own node. The day is agreed when more than two thirds of the endorsed validator providers anchored the same hash, which is 3 of 4 today. The hub only records the anchors, and a reader compares them.
+- Every honest validator computes the same pair from its own node. The day is agreed when more than two thirds of the endorsed validator providers anchored the same hash, which with four providers is 3 of 4. The hub only records the anchors, and a reader compares them.
 
 ## How it runs
 
