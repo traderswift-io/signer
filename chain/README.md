@@ -10,7 +10,7 @@ Cosmos SDK v0.55.0 app, CometBFT v0.40.0, zero fees, no staking, mint, distribut
 | `policy/` | The `policy` module: keeper, message servers, query server, REST routes, genesis. `policy.pb.go` is generated |
 | `validatorset/` | The validator set: admin, validators, the one-third rule, updates to CometBFT. `validatorset.pb.go` is generated |
 | `proto/` | `policy.proto`, `validatorset.proto`. Regenerate with `generate_proto.sh` (needs `buf` and `protoc-gen-gocosmos` on the PATH) |
-| `main.go`, `app.go`, `export.go` | Node binary and wiring, written from the SDK's Apache-2.0 `simapp`. The ante handler is the SDK's, with one decorator added in front: first contact (below) |
+| `main.go`, `app.go`, `export.go` | Node binary and wiring, written from the SDK's Apache-2.0 `simapp`. The ante handler is the SDK's, with one decorator added before fee deduction and the signature checks: first contact (below) |
 | `run_local_network.sh` | Local validators on `127.0.0.1` |
 
 ## Validator set
