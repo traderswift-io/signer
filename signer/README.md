@@ -1,6 +1,6 @@
 # signer-node
 
-One Rust daemon per signer. Distributed key generation for secp256k1, 2-of-3 signing by the full interactive protocol, the rules in `docs/INTERFACES.md`. Status: runs on `signer-1` as s1, s2 and s3, signing for a venue. The node speaks plain HTTP, so it listens on loopback only and expects loopback peer URLs; on `signer-1` each peer link is a local forward into a mutual-TLS tunnel run beside the node. Known limit: the peer-URL check tests the prefix only (`http://127.` also passes a host such as `http://127.example.com`), so the operator must give loopback peer URLs; a check that parses the host comes in the next release.
+One Rust daemon per signer. Distributed key generation for secp256k1, t-of-n signing (3 of 4 on `signer-1`) by the full interactive protocol, the rules in `docs/INTERFACES.md`. Status: runs on `signer-1` as s5, s6, s7 and s8, signing for a venue. The node speaks plain HTTP, so it listens on loopback only and expects loopback peer URLs; on `signer-1` each peer link is a local forward into a mutual-TLS tunnel run beside the node. Known limit: the peer-URL check tests the prefix only (`http://127.` also passes a host such as `http://127.example.com`), so the operator must give loopback peer URLs; a check that parses the host comes in the next release.
 
 ## Build and run
 
@@ -58,7 +58,7 @@ Config fields are in `src/signer_config.rs`. `identity_private_key_file` holds t
 
 A nonce written in step 2 or 3 is used up even if the round fails. Retry with a higher one.
 
-Any 2 of 3 signers overlap in one signer, and each proposal goes to everyone. So a repeated nonce or a blown daily size cap hits at least one signer that knows. The same holds for 3-of-5, not for 2-of-5.
+When 2t > n, any two quorums of t signers overlap in at least one signer, and each proposal goes to everyone. So a repeated nonce or a blown daily size cap hits at least one signer that knows. That holds for 2-of-3, 3-of-4 and 3-of-5, not for 2-of-5.
 
 ## Restart
 

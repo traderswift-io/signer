@@ -10,7 +10,7 @@ TraderSwift is a trading network. Agents and people use it to trade across excha
 
 ## What Signer is
 
-- A trading key is held as shares by a committee of three signers. Any 2 of the 3 sign together; one alone cannot. In the design, the signers generate the key jointly, so it never exists whole.
+- A trading key is held as shares by a committee of signers, today four. Any 3 of the 4 sign together; fewer cannot. The signers generated the key jointly, so it never existed whole.
 - An owner writes a policy to a small chain, `signer-1`: which venue account the key may trade, which order kinds, and the size caps.
 - Each signer builds the venue message itself from the order request and checks it against the policy on chain. It never signs a hash it did not build. Transfers and withdrawals are always refused. Every decision, signed or refused, is recorded on the chain.
 - Signing is interactive today.
@@ -24,11 +24,11 @@ TraderSwift is a trading network. Agents and people use it to trade across excha
 | `hubanchor/` | Daily state anchor onto the TraderSwift hub | Python |
 | `networks/signer-1/` | Genesis, its hash, and the peers | |
 
-Words: **Signer** is the product. A **signer node** is the Rust program. **s1, s2, s3** are the three signer machines.
+Words: **Signer** is the product. A **signer node** is the Rust program. **s5, s6, s7, s8** are the four signer machines.
 
 ## Status
 
-`signer-1` started on 12 Nov 2026 at 04:19:52 UTC. It runs one key, on a small live sub-account of the owner's, with real money. What was tested before launch is in the release `signer-1-gates` of this repository. The launch record, with the first live orders on 14 Nov, is the release `signer-1-launch`.
+`signer-1` started on 12 Nov 2026 at 04:19:52 UTC. It runs one key, on a small live sub-account of the owner's, with real money. What was tested before launch is in the release `signer-1-gates` of this repository. The launch record, with the first live orders on 14 Nov, is the release `signer-1-launch`. On 17 Nov the key was rotated: four new signers, s5 to s8, generated a new key jointly, 3 of 4, the owner approved it on the venue, and the first three signer machines were retired.
 
 ## Run a validator
 

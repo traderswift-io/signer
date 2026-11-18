@@ -116,7 +116,7 @@ Any other kind (withdraw, transfer, approve, sub-account, anything) is refused `
 4. **Stale chain:** local node unreachable or catching up, behind by more than `max_blocks_behind`, or latest block older than `halt_timeout_seconds` (default 180): only `cancel`, `schedule_cancel` and reduce-only orders are signed. A dead node falls back to the last policy it saw; a live node that does not know the policy is a refusal.
 5. **Nonce record:** the venue nonce must exceed the highest signed for that key_ref, and lie within (now minus 2 days, now plus `venue_nonce_max_ahead_milliseconds`, default 300 s). Written and synced to disk before the signer releases its signing message. A nonce written is used up even if the round fails.
 6. **Catch-up quorum:** a signer cannot tell a restart from a restored backup, so after any start each key refuses everything, cancels included, until `threshold - 1` peers have answered with their record. A peer's claim beyond the window is ignored, so one bad peer cannot jam the key.
-7. Every request, signed or refused, goes to `RecordDecision`. **Three-way log of a normal order:** with 2-of-3, two lines `signed` and one `refused` with reason `quorum_met_without_this_signer`, from the signer not chosen. A request refused by the asked signer before it proposes logs one line.
+7. Every request, signed or refused, goes to `RecordDecision`. **Three-way log of a normal order:** with t of n, t lines `signed` and n - t `refused` with reason `quorum_met_without_this_signer`, from the signers not chosen (3 of 4 on `signer-1`: three `signed`, one `refused`). A request refused by the asked signer before it proposes logs one line.
 
 ## Decision log transport
 
@@ -140,7 +140,7 @@ Each decision is written to the signer's disk outbox with fsync, then one worker
 
 Sealing: ECIES to the P-256 public key in the signer's pinned TLS certificate. Ephemeral P-256 key, ECDH, HKDF-SHA256 (salt: ephemeral public key then recipient public key, both compressed; info `signer-imported-share-sealing-v1`), AES-256-GCM with a random 12-byte nonce. Associated data binds the format, `key_ref`, `signer_id`, the certificate digest and `public_data_sha256`, so a share relabelled for another signer or paired with other public data does not open. The plaintext is the library's key share JSON.
 
-Result event the import job writes after posting, on the operator's event stream: `event_id`, `ts`, `source`, `correlation_id`, `key_ref`, `venue_address`, `outcome` (`installed` only when all three signers answered `installed` with that address, else `refused`). Kit step 4 waits on it.
+Result event the import job writes after posting, on the operator's event stream: `event_id`, `ts`, `source`, `correlation_id`, `key_ref`, `venue_address`, `outcome` (`installed` only when every signer of the committee answered `installed` with that address, else `refused`). Kit step 4 waits on it.
 
 ## Coordinator
 
