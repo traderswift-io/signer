@@ -79,4 +79,4 @@ Reused: no code. From Guardian Wallet `packages/mpc-wasm/src/sign.rs` (Apache-2.
 - An abort with no party named by the library is blamed on the counterparty, which is exact with two signers and `unknown` with more.
 - No share refresh: this library version has no threshold refresh.
 - A decision that could not be delivered waits on disk for the next decision or the next start. There is no retry timer.
-- One decision is one transaction, so a normal order costs three transactions and a re-armed one six.
+- One decision is one transaction, so a normal order costs n transactions, one per committee signer, and a re-armed one 2n: four and eight on `signer-1`.
