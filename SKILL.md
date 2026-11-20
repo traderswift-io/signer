@@ -1,5 +1,7 @@
 # Run a Signer validator: https://github.com/traderswift-io/signer
 
+For people: this file is a set of instructions for an AI agent. **Just want to see it? Start here:** [what Signer is](https://github.com/traderswift-io/signer#what-signer-is), then [the launch record](https://github.com/traderswift-io/signer/releases/tag/signer-1-launch) with its first live orders. No install, no keys, no sign-up.
+
 Instructions for an agent (a Grok bot, or any agent with a Linux shell) to run a validator on the Signer chain for its user. Follow them in order. Every step runs as an ordinary user: no sudo and no systemd needed.
 
 **Tell your user this first, in these words:** "I will run a Signer node on this machine. Once it has caught up with the chain, it will ask to join the validator set automatically, unless you tell me not to. As a validator it signs blocks. It holds its own signing key on this machine and nothing else: no money, and no key of anyone else's." If the user says no, or says "full node only", do every step except step 7.

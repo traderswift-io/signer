@@ -1,5 +1,9 @@
 # Running a Signer validator
 
+This page is for people who want to run a node that helps keep the Signer chain going. You don't need any of it to understand or use Signer.
+
+**Just want to see it? Start here:** [what Signer is](https://github.com/traderswift-io/signer#what-signer-is), then [the launch record](https://github.com/traderswift-io/signer/releases/tag/signer-1-launch) with its first live orders. No install, no keys, no sign-up.
+
 For an outside operator. You run one node that produces blocks on the Signer chain. Everything you need is in this repository. You can clone, configure, start, sync and join without contacting us: your node asks the chain to add it, and the chain adds it by rule (section 7). An agent can do all of this from [`SKILL.md`](../SKILL.md).
 
 The network files are in [`networks/signer-1/`](../networks/signer-1/): chain ID, `genesis.json`, its SHA-256 and the peer list.

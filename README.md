@@ -1,5 +1,9 @@
 # Signer
 
+Signer lets a trading bot place orders on an exchange account while no single person or machine, including us, ever holds the account's key. Every order it signs or refuses is checked against limits the owner set and recorded in public.
+
+**Just want to see it? Start here:** [what Signer is](https://github.com/traderswift-io/signer#what-signer-is), then [the launch record](https://github.com/traderswift-io/signer/releases/tag/signer-1-launch) with its first live orders. No install, no keys, no sign-up.
+
 TraderSwift Signer holds a trading key that no one holds. It is one of the subnets of TraderSwift, next to timeseries, execution and context.
 
 Signer continues the Lockbox Milestone A test, archived at https://github.com/PythonForForex/lockbox-chain.
